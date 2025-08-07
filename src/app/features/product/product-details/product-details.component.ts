@@ -4,6 +4,7 @@ import { CartService } from '../../../services/cart.service';
 import { ProductService } from '../../../services/product.service';
 import { MatCardModule } from "@angular/material/card";
 import { Location } from '@angular/common';
+import { Product } from '../../../models/product-model';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ import { Location } from '@angular/common';
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
-  product: any;
+ product!: Product;;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,17 +24,21 @@ export class ProductDetailsComponent implements OnInit {
   ) {
 
   }
-  ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-   this.product = this.productService.getProduct(id).subscribe(p => (this.product = p));
-   console.log(this.product);
-   
-  }
+ngOnInit(): void {
+  const id = +this.route.snapshot.paramMap.get('id')!;
+  this.productService.getProduct(id).subscribe(p => {
+    this.product = p;
+    console.log(this.product);
+  });
+}
   addToCart() {
+  if (this.product) {
     this.cartService.addToCart(this.product);
     this.router.navigate(['/cart']);
-
+  } else {
+    console.warn('Product not loaded yet. Cannot add to cart.');
   }
+}
    getStars(rating: number): string[] {
     const stars: string[] = [];
     const fullStars = Math.floor(rating);

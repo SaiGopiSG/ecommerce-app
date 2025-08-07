@@ -1,38 +1,38 @@
 <div class="container py-4">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-2">
     <h2 class="mb-0">🛒 Your Cart</h2>
-    <button class="btn btn-secondary" (click)="backToProductDetails()">
-      ← Back
-    </button>
+    <button class="btn btn-secondary" (click)="backToProductDetails()">← Back</button>
   </div>
 
-  <table class="table table-bordered table-hover">
-    <thead class="table-dark text-center">
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Remove</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of cart">
-        <td class="text-center">
-          <img [src]="item?.image" width="60" class="img-thumbnail">
-        </td>
-        <td class="text-center">{{ item?.name }}</td>
-        <td class="text-center">₹{{ item?.price }}</td>
-        <td class="text-center">
-          <button class="btn btn-sm btn-danger" (click)="removeItem(item.id)">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart">
+          <td class="text-center">
+            <img [src]="item?.image" class="img-thumbnail" style="max-width: 60px;">
+          </td>
+          <td class="text-center">{{ item?.name }}</td>
+          <td class="text-center">₹{{ item?.price }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-danger" (click)="removeItem(item.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <div class="text-end mt-3">
-    <h4>Total: ₹{{ total }}</h4>
-    <button class="btn btn-outline-secondary" (click)="clearCart()">Clear Cart</button>
+  <div class="d-flex flex-column flex-sm-row justify-content-end align-items-sm-center gap-3 mt-4">
+    <h4 class="mb-0">Total: ₹{{ total }}</h4>
+    <button class="btn btn-secondary" (click)="clearCart()">Clear Cart</button>
   </div>
 </div>
