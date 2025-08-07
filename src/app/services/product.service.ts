@@ -7,7 +7,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<any[]>('/assets/products.json');
+    return this.http.get<any[]>('assets/products.json');
   }
 
   getProduct(id: number) {
