@@ -1,0 +1,40 @@
+<div class="container py-5">
+  <div class="card border-0 shadow-lg">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-5 text-center">
+        <img [src]="product.image" alt="{{ product.name }}" class="img-fluid rounded" style="max-height: 240px;">
+      </div>
+
+      <div class="col-md-7">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-1">
+            <h2 class="card-title fw-bold">{{ product.name }}</h2>
+            <button class="btn btn-outline-secondary" (click)="backToProducts()">
+              ← Back
+            </button>
+          </div>
+
+          <p class="text-muted mb-1">{{ product.category }}</p>
+          <h4 class="text-success mb-3">₹{{ product.price }}</h4>
+          <div class="mb-3">
+            <ng-container *ngFor="let star of getStars(product.rating)">
+              <i class="bi" [ngClass]="{
+                'bi-star-fill': star === 'full',
+                'bi-star-half': star === 'half',
+                'bi-star': star === 'empty',
+                'text-warning': true
+              }"></i>
+            </ng-container>
+            <span class="ms-2 text-muted">({{ product.rating }} / 5)</span>
+          </div>
+
+          <p class="card-text">{{ product.description }}</p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <button class="btn btn-lg btn-primary" (click)="addToCart()">Add to Cart</button>
+            <button class="btn btn-lg btn-success">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

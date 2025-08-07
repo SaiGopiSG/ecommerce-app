@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Smartphone",
+    "category": "Electronics",
+    "price": 29999,
+    "rating": 4.5,
+    "description": "A powerful smartphone with great features.",
+    "image" :"./assets/images/img1.jpg"
+
+  },
+  {
+    "id": 2,
+    "name": "Running Shoes",
+    "category": "Fashion",
+    "price": 4999,
+    "rating": 4.0,
+    "description": "Comfortable and stylish running shoes.",
+    "image" :"./assets/images/img2.png"
+
+  },
+  {
+    "id": 3,
+    "name": "Bluetooth Headphones",
+    "category": "Electronics",
+    "price": 3499,
+    "rating": 3.5,
+    "description": "Noise-cancelling headphones with long battery life.",
+    "image" :"./assets/images/img3.jpg"
+
+  },
+  {
+    "id": 4,
+    "name": "Leather Wallet",
+    "category": "Fashion",
+    "price": 1299,
+    "rating": 4.0,
+    "description": "Elegant leather wallet with multiple compartments.",
+    "image" :"./assets/images/img4.jpg"
+
+  },
+  {
+    "id": 5,
+    "name": "Gaming Laptop",
+    "category": "Electronics",
+    "price": 84999,
+    "rating": 4.5,
+    "description": "High-performance laptop for gaming and productivity.",
+    "image" :"./assets/images/img5.jpg"
+
+  },
+  {
+    "id": 6,
+    "name": "Wrist Watch",
+    "category": "Fashion",
+    "price": 5999,
+    "rating": 4.0,
+    "description": "Stylish analog watch with leather strap.",
+    "image" :"./assets/images/img6.jpg"
+
+  },
+  {
+    "id": 7,
+    "name": "Microwave Oven",
+    "category": "Home Appliances",
+    "price": 8999,
+    "rating": 3.0,
+    "description": "Compact microwave oven with multiple cooking modes.",
+    "image" :"./assets/images/img7.png"
+
+  },
+  {
+    "id": 8,
+    "name": "Yoga Mat",
+    "category": "Fitness",
+    "price": 999,
+    "rating": 4.5,
+    "description": "Non-slip yoga mat for comfortable workouts.",
+    "image" :"./assets/images/img8.jpg"
+
+  },
+  {
+    "id": 9,
+    "name": "Smart TV",
+    "category": "Electronics",
+    "price": 39999,
+    "rating": 2.5,
+    "description": "4K Ultra HD Smart TV with streaming apps.",
+    "image" :"./assets/images/img9.png"
+
+  },
+  {
+    "id": 10,
+    "name": "Backpack",
+    "category": "Fashion",
+    "price": 1999,
+    "rating": 4.0,
+    "description": "Durable backpack with multiple compartments.",
+    "image" :"./assets/images/img10.png"
+
+  }
+]
