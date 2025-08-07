@@ -13,7 +13,8 @@ import { Product } from '../../../models/product-model';
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
- product!: Product;;
+ product!: Product;
+  loading: boolean=true;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +25,20 @@ export class ProductDetailsComponent implements OnInit {
   ) {
 
   }
-ngOnInit(): void {
+ngOnInit() {
   const id = +this.route.snapshot.paramMap.get('id')!;
-  this.productService.getProduct(id).subscribe(p => {
-    this.product = p;
-    console.log(this.product);
+  this.productService.getProduct(id).subscribe({
+    next: (p) => {
+      this.product = p;
+      this.loading = false;
+    },
+    error: (err) => {
+      console.error('Failed to load product', err);
+      this.loading = false;
+    }
   });
 }
+
   addToCart() {
   if (this.product) {
     this.cartService.addToCart(this.product);

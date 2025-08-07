@@ -1,38 +1,53 @@
 <div class="container py-4">
   <div class="card border-0 shadow-lg">
-    <div class="row gy-4 gx-0 align-items-center flex-column flex-md-row">
-      <div class="col-12 col-md-5 text-center">
-        <img [src]="product.image" alt="{{ product.name }}" class="img-fluid rounded mx-auto" style="max-height: 240px;">
+    <ng-container *ngIf="product; else loading">
+      <div class="row gy-4 gx-0 align-items-center flex-column flex-md-row">
+        <div class="col-12 col-md-5 text-center">
+          <img [src]="product.image" alt="{{ product.name }}" class="img-fluid rounded mx-auto" style="max-height: 240px;">
+        </div>
+
+        <div class="col-12 col-md-7">
+          <ng-container>
+            <div class="card-body">
+              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-2">
+                <h2 class="card-title fw-bold mb-2 mb-md-0">{{ product.name }}</h2>
+                <button class="btn btn-outline-secondary" (click)="backToProducts()">← Back</button>
+              </div>
+
+              <p class="text-muted mb-1">{{ product.category }}</p>
+              <h4 class="text-success mb-3">₹{{ product.price }}</h4>
+              <div class="mb-3">
+                <ng-container *ngFor="let star of getStars(product.rating)">
+                  <i class="bi" [ngClass]="{
+                    'bi-star-fill': star === 'full',
+                    'bi-star-half': star === 'half',
+                    'bi-star': star === 'empty',
+                    'text-warning': true
+                  }"></i>
+                </ng-container>
+                <span class="ms-2 text-muted">({{ product.rating }} / 5)</span>
+              </div>
+              <p class="card-text">{{ product.description }}</p>
+
+              <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                <button class="btn btn-lg btn-primary w-100 w-sm-auto" (click)="addToCart()">Add to Cart</button>
+                <button class="btn btn-lg btn-success w-100 w-sm-auto">Buy Now</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
       </div>
-
-      <div class="col-12 col-md-7">
-        <div class="card-body">
-          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-2">
-            <h2 class="card-title fw-bold mb-2 mb-md-0">{{ product.name }}</h2>
-            <button class="btn btn-outline-secondary" (click)="backToProducts()">← Back</button>
-          </div>
-
-          <p class="text-muted mb-1">{{ product.category }}</p>
-          <h4 class="text-success mb-3">₹{{ product.price }}</h4>
-          <div class="mb-3">
-            <ng-container *ngFor="let star of getStars(product.rating)">
-              <i class="bi" [ngClass]="{
-                'bi-star-fill': star === 'full',
-                'bi-star-half': star === 'half',
-                'bi-star': star === 'empty',
-                'text-warning': true
-              }"></i>
-            </ng-container>
-            <span class="ms-2 text-muted">({{ product.rating }} / 5)</span>
-          </div>
-          <p class="card-text">{{ product.description }}</p>
-
-          <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
-            <button class="btn btn-lg btn-primary w-100 w-sm-auto" (click)="addToCart()">Add to Cart</button>
-            <button class="btn btn-lg btn-success w-100 w-sm-auto">Buy Now</button>
+    </ng-container>
+    <ng-template #loading>
+      <div class="row gy-4 gx-0 align-items-center flex-column flex-md-row">
+        <div class="col-12">
+          <div class="card-body text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </div>
 </div>
